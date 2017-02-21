@@ -31,7 +31,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#A4A4A4"
+            android:background="@color/light_gray"
             android:orientation="vertical">
 
             <TextView
@@ -41,8 +41,8 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
-                android:text="Team East"
-                android:textColor="#616161"
+                android:text="@string/team_A"
+                android:textColor="@color/dark_gray"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,7 +52,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_horizontal"
-                android:text="Winner"
+                android:text="@string/winner"
                 android:textAllCaps="true"
                 android:textSize="46sp"/>
 
@@ -63,40 +63,28 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textColor="#000000"
+                android:text="@string/startingScore"
+                android:textColor="@android:color/black"
                 android:textSize="46sp" />
 
             <Button
                 android:id="@+id/team_a_2pt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:layout_marginTop="24dp"
                 android:onClick="scoreTwoTeamA"
-                android:text="+2 points"/>
+                android:text="@string/twopointer"/>
 
             <Button
                 android:id="@+id/team_a_1pt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:onClick="scoreOneTeamA"
-                android:text="+1 points"/>
+                android:text="@string/onepointer"/>
 
             <Button
                 android:id="@+id/team_a_rb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:onClick="rebound"
-                android:text="Rebound"/>
+                android:text="@string/rebound"/>
 
         </LinearLayout>
 
@@ -121,8 +109,8 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
-                android:text="Team West"
-                android:textColor="#616161"
+                android:text="@string/team_B"
+                android:textColor="@color/dark_gray"
                 android:textSize="24sp" />
 
             <TextView
@@ -131,7 +119,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
-                android:text="Winner"
+                android:text="@string/winner"
                 android:textAllCaps="true"
                 android:textSize="46sp"/>
 
@@ -142,40 +130,28 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_gravity="center"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textColor="#000000"
+                android:text="@string/startingScore"
+                android:textColor="@android:color/black"
                 android:textSize="46sp" />
 
             <Button
                 android:id="@+id/team_b_2pt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:layout_marginTop="24dp"
                 android:onClick="scoreTwoTeamB"
-                android:text="+2 points"/>
+                android:text="@string/twopointer"/>
 
             <Button
                 android:id="@+id/team_b_1pt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:onClick="scoreOneTeamB"
-                android:text="+1 points"/>
+                android:text="@string/onepointer"/>
 
             <Button
                 android:id="@+id/team_b_rb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                style="@style/button_style"
                 android:onClick="rebound"
-                android:text="Rebound"/>
+                android:text="@string/rebound"/>
 
         </LinearLayout>
 
@@ -193,7 +169,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
         android:layout_marginTop="30dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:background="#A4A4A4">
+        android:background="@color/dark_gray">
 
         <Button
             android:layout_width="wrap_content"
@@ -201,7 +177,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:onClick="resetScore"
-            android:text="Reset" />
+            android:text="@string/reset" />
 
     </RelativeLayout>
 

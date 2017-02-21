@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CourtCounter</string>
+    <string name="team_A">Team East</string>
+    <string name="team_B">Team West</string>
+    <string name="winner">Winner</string>
+    <string name="twopointer">+2 points</string>
+    <string name="onepointer">+1 point</string>
+    <string name="rebound">rebound</string>
+    <string name="reset">reset</string>
+    <string name="startingScore">0</string>
 </resources>
