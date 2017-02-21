@@ -19,19 +19,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        onAttack= "B";
+        onAttack = "B";
         switchAttack();
         findViewById(R.id.winner_a).setVisibility(View.GONE);
         findViewById(R.id.winner_b).setVisibility(View.GONE);
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             scoreTeamA = savedInstanceState.getInt(TEAMASCORE);
             scoreTeamB = savedInstanceState.getInt(TEAMBSCORE);
             onAttack = savedInstanceState.getString(ATTACKER);
-            display (scoreTeamA);
+            display(scoreTeamA);
             display2(scoreTeamB);
             winCheckTeamA();
             winCheckTeamB();
-            if ( onAttack.equals("A")) {
+            if (onAttack.equals("A")) {
                 onAttack = "B";
                 switchAttack();
             } else {
@@ -49,65 +49,80 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt(TEAMBSCORE, scoreTeamB);
         outState.putString(ATTACKER, onAttack);
     }
+
     /**
      * Displays the given score for Team A.
+     *
      * @param number takes scores from methods.
      */
-    public void display (int number){
-        TextView countViewer = (TextView)findViewById(R.id.team_a_score);
-        countViewer.setText(""+ number);
+    public void display(int number) {
+        TextView countViewer = (TextView) findViewById(R.id.team_a_score);
+        countViewer.setText("" + number);
     }
+
     /**
      * Displays the given score for Team B.
+     *
      * @param number takes scores from methods.
      */
-    public void display2 (int number){
-        TextView countViewer = (TextView)findViewById(R.id.team_b_score);
-        countViewer.setText(""+ number);
+    public void display2(int number) {
+        TextView countViewer = (TextView) findViewById(R.id.team_b_score);
+        countViewer.setText("" + number);
     }
+
     /**
      * Adds one to Team A score.
+     *
      * @param view updates team score
      */
-    public void scoreOneTeamA(View view){
-        scoreTeamA=scoreTeamA+1;
+    public void scoreOneTeamA(View view) {
+        scoreTeamA = scoreTeamA + 1;
         display(scoreTeamA);
         winCheckTeamA();
     }
+
     /**
      * Adds two to Team A score
+     *
      * @param view updates team score
      */
-    public void scoreTwoTeamA(View view){
-        scoreTeamA=scoreTeamA+2;
+    public void scoreTwoTeamA(View view) {
+        scoreTeamA = scoreTeamA + 2;
         display(scoreTeamA);
         winCheckTeamA();
     }
+
     /**
      * Adds one to Team B score
+     *
      * @param view updates team score
      */
-    public void scoreOneTeamB(View view){
-        scoreTeamB=scoreTeamB+1;
+    public void scoreOneTeamB(View view) {
+        scoreTeamB = scoreTeamB + 1;
         winCheckTeamB();
         display2(scoreTeamB);
     }
+
     /**
      * Adds two to Team B score
+     *
      * @param view updates team score
      */
-    public void scoreTwoTeamB(View view){
-        scoreTeamB=scoreTeamB+2;
+    public void scoreTwoTeamB(View view) {
+        scoreTeamB = scoreTeamB + 2;
         winCheckTeamB();
         display2(scoreTeamB);
     }
+
     /**
      * Switches attacking side via switchattack method.
+     *
      * @param view Activated by Rebound buttons.
      */
-    public void rebound(View view){
+    public void rebound(View view) {
         switchAttack();
     }
+
     /**
      * Method run by Team A score buttons.
      * If there is a winner, buttons except reset are disabled, and WINNER textview
@@ -119,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.team_a_score).setVisibility(View.GONE);
             disable_A();
             disable_B();
+        } else {
         }
-        else {
-        }
-     }
+    }
+
     /**
      * Method run by Team A score buttons.
      * If there is a winner, buttons except reset are disabled, and WINNER textview
@@ -134,10 +149,10 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.team_b_score).setVisibility(View.GONE);
             disable_A();
             disable_B();
-        }
-        else {
+        } else {
         }
     }
+
     /**
      * *Reset Button: resets both scores to 0, reset attacking side to Team A,
      * resets winner textview to team score.
@@ -147,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         scoreTeamB = 0;
         display(scoreTeamA);
         display2(scoreTeamB);
-        onAttack= "B";
+        onAttack = "B";
         switchAttack();
         findViewById(R.id.winner_a).setVisibility(View.GONE);
         findViewById(R.id.winner_b).setVisibility(View.GONE);
@@ -155,21 +170,21 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.team_b_score).setVisibility(View.VISIBLE);
         enable_A();
     }
+
     /**
      * Swtiches the attacking team, gives gray backgroud to attacking team, and
      * disables defensive teams buttons.
      */
     public void switchAttack() {
-    LinearLayout layoutA = (LinearLayout) findViewById(R.id.team_a_layout);
-    LinearLayout layoutB = (LinearLayout) findViewById(R.id.team_b_layout);
-   if (onAttack.equals("A")) {
+        LinearLayout layoutA = (LinearLayout) findViewById(R.id.team_a_layout);
+        LinearLayout layoutB = (LinearLayout) findViewById(R.id.team_b_layout);
+        if (onAttack.equals("A")) {
             onAttack = "B";
             layoutB.setBackgroundColor(Color.parseColor("#A4A4A4"));
             layoutA.setBackgroundColor(0x00000000);
             disable_A();
             enable_B();
-    }
-    else{
+        } else {
             onAttack = "A";
             layoutA.setBackgroundColor(Color.parseColor("#A4A4A4"));
             layoutB.setBackgroundColor(0x00000000);
@@ -177,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
             disable_B();
         }
     }
+
     /**
      * Disable Team A related buttons. Used by methods for switching attacking side and reset.
      */
@@ -188,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
         a_2pt.setEnabled(false);
         a_rb.setEnabled(false);
     }
+
     /**
      * Disable Team B related buttons. Used by methods for switching attacking side and reset.
      */
@@ -199,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         b_2pt.setEnabled(false);
         b_rb.setEnabled(false);
     }
+
     /**
      * Enable Team A related buttons. Used by methods for switching attacking side and reset.
      */
@@ -210,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         a_2pt.setEnabled(true);
         a_rb.setEnabled(true);
     }
+
     /**
      * Enable Team B related buttons. Used by methods for switching attacking side and reset.
      */

@@ -5,5 +5,4 @@
     <dimen name="winner_textsize">76sp</dimen>
     <dimen name="button_textsize">46sp</dimen>
     <dimen name="score_margin">30dp</dimen>
-
 </resources>

@@ -54,7 +54,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:gravity="center_horizontal"
                 android:text="@string/winner"
                 android:textAllCaps="true"
-                android:textSize="46sp"/>
+                android:textSize="@dimen/winner_textsize"/>
 
             <TextView
                 android:id="@+id/team_a_score"
@@ -65,26 +65,32 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:fontFamily="sans-serif-light"
                 android:text="@string/startingScore"
                 android:textColor="@android:color/black"
-                android:textSize="46sp" />
+                android:textSize="@dimen/winner_textsize" />
 
             <Button
                 android:id="@+id/team_a_2pt"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:layout_marginTop="24dp"
                 android:onClick="scoreTwoTeamA"
-                android:text="@string/twopointer"/>
+                android:text="@string/twopointer"
+                android:textSize="@dimen/button_textsize"/>
 
             <Button
                 android:id="@+id/team_a_1pt"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:onClick="scoreOneTeamA"
-                android:text="@string/onepointer"/>
+                android:text="@string/onepointer"
+                android:textSize="@dimen/button_textsize"/>
 
             <Button
                 android:id="@+id/team_a_rb"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:onClick="rebound"
-                android:text="@string/rebound"/>
+                android:text="@string/rebound"
+                android:textSize="@dimen/button_textsize"/>
 
         </LinearLayout>
 
@@ -121,7 +127,7 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:layout_marginBottom="8dp"
                 android:text="@string/winner"
                 android:textAllCaps="true"
-                android:textSize="46sp"/>
+                android:textSize="@dimen/winner_textsize"/>
 
             <TextView
                 android:id="@+id/team_b_score"
@@ -132,26 +138,32 @@ tools:context="com.example.android.courtcounter.MainActivity">
                 android:fontFamily="sans-serif-light"
                 android:text="@string/startingScore"
                 android:textColor="@android:color/black"
-                android:textSize="46sp" />
+                android:textSize="@dimen/winner_textsize" />
 
             <Button
                 android:id="@+id/team_b_2pt"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:layout_marginTop="24dp"
                 android:onClick="scoreTwoTeamB"
-                android:text="@string/twopointer"/>
+                android:text="@string/twopointer"
+                android:textSize="@dimen/button_textsize"/>
 
             <Button
                 android:id="@+id/team_b_1pt"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:onClick="scoreOneTeamB"
-                android:text="@string/onepointer"/>
+                android:text="@string/onepointer"
+                android:textSize="@dimen/button_textsize"/>
 
             <Button
                 android:id="@+id/team_b_rb"
                 style="@style/button_style"
+                android:layout_marginBottom="@dimen/score_margin"
                 android:onClick="rebound"
-                android:text="@string/rebound"/>
+                android:text="@string/rebound"
+                android:textSize="@dimen/button_textsize"/>
 
         </LinearLayout>
 
@@ -177,7 +189,8 @@ tools:context="com.example.android.courtcounter.MainActivity">
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:onClick="resetScore"
-            android:text="@string/reset" />
+            android:text="@string/reset"
+            android:textSize="@dimen/button_textsize" />
 
     </RelativeLayout>
 
