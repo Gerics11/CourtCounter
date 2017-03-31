@@ -17,21 +17,34 @@
         android:layout_height="380dp"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/team_a_layout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="380dp"
             android:layout_weight="1"
             android:background="@color/light_gray"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/matchScoreA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/startingScore"
+                android:textSize="60sp"
+                android:padding="8dp"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/teamAName"
                 style="@style/textview_style"
-                android:layout_marginBottom="16dp"
                 android:layout_marginTop="30dp"
-                android:text="@string/team_A"
-                android:textColor="@color/dark_gray"
-                android:textSize="24sp" />
+                android:text="@string/team_1"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp"
+                android:textSize="24sp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/opaq_darkgray"
+                android:padding="6dp"/>
 
             <TextView
                 android:id="@+id/team_a_score"
@@ -39,46 +52,68 @@
                 android:layout_marginBottom="@dimen/score_margin"
                 android:text="@string/startingScore"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/winner_textsize" />
+                android:textSize="@dimen/winner_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/teamAName"/>
 
             <Button
                 android:id="@+id/team_a_2pt"
                 style="@style/button_style"
                 android:layout_marginTop="24dp"
-                android:onClick="scoreTwoTeamA"
+                android:onClick="score"
                 android:text="@string/twopointer"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_a_score"/>
 
             <Button
                 android:id="@+id/team_a_1pt"
                 style="@style/button_style"
-                android:onClick="scoreOneTeamA"
+                android:onClick="score"
                 android:text="@string/onepointer"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_a_2pt"/>
 
             <Button
                 android:id="@+id/team_a_rb"
                 style="@style/button_style"
                 android:onClick="rebound"
                 android:text="@string/rebound"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_a_1pt"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/team_b_layout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="380dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/matchScoreB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/startingScore"
+                android:textSize="60sp"
+                android:padding="8dp"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
                 style="@style/textview_style"
+                android:id="@+id/teamBName"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="30dp"
-                android:text="@string/team_B"
-                android:textColor="@color/dark_gray"
-                android:textSize="24sp" />
+                android:text="@string/team_2"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/opaq_darkgray"
+                android:padding="6dp"/>
 
             <TextView
                 android:id="@+id/team_b_score"
@@ -86,31 +121,39 @@
                 android:layout_marginBottom="@dimen/score_margin"
                 android:text="@string/startingScore"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/winner_textsize" />
+                android:textSize="@dimen/winner_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/teamBName"/>
 
             <Button
                 android:id="@+id/team_b_2pt"
                 style="@style/button_style"
                 android:layout_marginTop="24dp"
-                android:onClick="scoreTwoTeamB"
+                android:onClick="score"
                 android:text="@string/twopointer"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_b_score"/>
 
             <Button
                 android:id="@+id/team_b_1pt"
                 style="@style/button_style"
-                android:onClick="scoreOneTeamB"
+                android:onClick="score"
                 android:text="@string/onepointer"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_b_2pt"/>
 
             <Button
                 android:id="@+id/team_b_rb"
                 style="@style/button_style"
                 android:onClick="rebound"
                 android:text="@string/rebound"
-                android:textSize="@dimen/button_textsize" />
+                android:textSize="@dimen/button_textsize"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/team_b_1pt"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -118,18 +161,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:padding="20dp"
-        android:background="@color/dark_gray">
+        android:layout_marginTop="42dp"
+        android:padding="10dp"
+        android:background="@color/light_gray">
 
         <Button
+            android:id="@+id/resetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:onClick="resetScore"
-            android:textSize="@dimen/button_textsize"
+            android:textSize="18sp"
+            android:padding="18dp"
             android:text="@string/reset" />
+
 
     </RelativeLayout>
 
