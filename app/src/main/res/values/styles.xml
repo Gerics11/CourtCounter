@@ -1,21 +1,67 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">#E53B05</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="colorButtonNormal">#E53B05</item>
         <item name="android:textColorSecondary">#E53B05</item>
         <item name="colorControlActivated">#E53B05</item>
     </style>
-        <style name="button_style">
+
+    <style name="button_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:layout_marginLeft">24dp</item>
-        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginBottom">@dimen/buttons_gap</item>
+        <item name="android:layout_marginLeft">@dimen/button_sidemargin</item>
+        <item name="android:layout_marginRight">@dimen/button_sidemargin</item>
+        <item name="android:textSize">@dimen/button_textsize</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
-    <style name="textview_style">
+
+    <style name="team_layout">
+        <item name="android:layout_height">@dimen/teamlayout_height</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="score_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/score_textsize</item>
+        <item name="android:padding">8dp</item>
     </style>
+
+    <style name="team_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">@dimen/team_textview_marginbottom</item>
+        <item name="android:layout_marginTop">@dimen/team_textview_margintop</item>
+        <item name="android:background">@color/opaq_darkgray</item>
+        <item name="android:padding">@dimen/team_textview_padding</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/team_textview_textsize</item>
+    </style>
+
+    <style name="edittext_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/team_edittext_padding</item>
+        <item name="android:textSize">@dimen/team_edittext_textsize</item>
+        <item name="android:inputType">textCapWords</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/team_edittext_verticalpos</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="intro_textview">
+        <item name="android:textSize">@dimen/intro_textsize</item>
+        <item name="android:paddingTop">@dimen/intro_topbottom_padding</item>
+        <item name="android:paddingBottom">@dimen/intro_topbottom_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
 
 </resources>

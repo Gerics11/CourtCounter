@@ -1,127 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
+        android:contentDescription="@string/contentDesc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ball"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/ball" />
 
     <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="horizontal"
-        android:id="@+id/top_layout">
+        android:layout_height="@dimen/header_height">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/versus"
-            android:scaleType="centerCrop"
+            android:contentDescription="@string/contentDesc"
+            android:layout_width="@dimen/VS_image"
+            android:layout_height="@dimen/VS_image"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"/>
-    <EditText
-        android:id="@+id/editText_teamA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="25sp"
-        android:inputType="textCapWords"
-        android:gravity="center"
-        android:hint="@string/team_1"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="63dp"/>
+            android:layout_marginTop="@dimen/VS_image_position"
+            android:scaleType="centerCrop"
+            android:src="@drawable/versus" />
 
-    <EditText
-        android:id="@+id/editText_teamB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="25sp"
-        android:inputType="textCapWords"
-        android:gravity="center"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="63dp"
-        android:hint="@string/team_2"/>
+        <EditText
+            android:id="@+id/editText_teamA"
+            style="@style/edittext_style"
+            android:layout_marginLeft="@dimen/team_edittext_margin"
+            android:layout_marginStart="@dimen/team_edittext_margin"
+            android:hint="@string/team_1"
+            android:imeOptions="actionNext" />
+
+        <EditText
+            android:id="@+id/editText_teamB"
+            style="@style/edittext_style"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/team_edittext_margin"
+            android:layout_marginEnd="@dimen/team_edittext_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/team_2" />
+
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/top_layout"
         android:orientation="vertical"
-        android:layout_below="@+id/top_layout"
-        android:padding="16dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/winScore"
-        android:layout_marginTop="50dp"/>
+        android:padding="@dimen/linearlayout_padding">
 
-    <EditText
-        android:id="@+id/editText_score"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:paddingLeft="8dp"
-        android:gravity="center"
-        android:paddingRight="8dp"
-        android:inputType="number"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scoring"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            style="@style/intro_textview"
+            android:layout_marginTop="@dimen/linearlayout_position"
+            android:text="@string/winScore" />
 
-    <RadioGroup
-        android:id="@+id/radiogroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-        <RadioButton
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="@string/pointSystem1"/>
-        <RadioButton
+        <EditText
+            android:id="@+id/editText_score"
+            style="@style/intro_textview"
+            android:gravity="center"
+            android:hint="@string/winScoreHint"
+            android:inputType="number" />
+
+        <TextView
+            style="@style/intro_textview"
+            android:text="@string/scoring" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pointSystem2"/>
-    </RadioGroup>
+            android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/matchType"
-        android:layout_marginBottom="8dp"/>
-    <RadioGroup
-        android:id="@+id/radiogroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-        <RadioButton
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="@string/setType"
-        android:onClick="setRules"/>
-        <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/switchType"
-        android:onClick="switchRules"/>
-    </RadioGroup>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/allSet"
-        android:onClick="readInfo"
-        android:padding="20dp"/>
+            <RadioButton
+                style="@style/intro_textview"
+                android:layout_marginRight="@dimen/radiobutton_gap"
+                android:layout_marginEnd="@dimen/radiobutton_gap"
+                android:text="@string/pointSystem1" />
+
+            <RadioButton
+                style="@style/intro_textview"
+                android:text="@string/pointSystem2" />
+
+        </RadioGroup>
+
+        <TextView
+            style="@style/intro_textview"
+            android:text="@string/matchType" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                style="@style/intro_textview"
+                android:layout_marginRight="@dimen/radiobutton_gap"
+                android:layout_marginEnd="@dimen/radiobutton_gap"
+                android:onClick="setRules"
+                android:text="@string/setType" />
+
+            <RadioButton
+                style="@style/intro_textview"
+                android:onClick="switchRules"
+                android:text="@string/switchType" />
+        </RadioGroup>
+
+        <Button
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/introfinish_margintop"
+            android:onClick="readInfo"
+            android:text="@string/allSet" />
     </LinearLayout>
 
 </RelativeLayout>

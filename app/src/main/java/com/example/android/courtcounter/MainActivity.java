@@ -11,14 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     String onAttack = "A";
     int matchScoreA = 0;
     int matchScoreB = 0;
     private static final String ATTACKER = "SAVEDATTACKER";
     private static final String MATCHSCOREA = "SAVEDMATCHSCOREA";
     private static final String MATCHSCOREB = "SAVEDMATCHSCOREB";
-    CurrentGame game = new CurrentGame("PH","PH",0,"PH","PH");
+    CurrentGame game = new CurrentGame("PH", "PH", 0, "PH", "PH");
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +45,14 @@ public class MainActivity extends AppCompatActivity{
             mScoreDisplay("A");
             mScoreDisplay("B");
             //additional checks
-            winCheck("A");
-            winCheck("B");
+            winCheck("A", true);
+            winCheck("B", true);
             scoreButtonDisplay();
-            if (onAttack.equals("B"))  {
+            if (onAttack.equals("B")) {
                 onAttack = "A";
                 switchAttack();
+            } else {
+                scoreButtonState("attackA");
             }
         }
     }
@@ -66,101 +68,120 @@ public class MainActivity extends AppCompatActivity{
 
     public void display(String team, int score) {
         switch (team) {
-            case "A": TextView scoreViewA = (TextView) findViewById(R.id.team_a_score);
-                      scoreViewA.setText(String.valueOf(score));
-                      break;
-            case "B": TextView scoreViewB = (TextView) findViewById(R.id.team_b_score);
-                      scoreViewB.setText(String.valueOf(score));
-                      break;
+            case "A":
+                TextView scoreViewA = (TextView) findViewById(R.id.team_a_score);
+                scoreViewA.setText(String.valueOf(score));
+                break;
+            case "B":
+                TextView scoreViewB = (TextView) findViewById(R.id.team_b_score);
+                scoreViewB.setText(String.valueOf(score));
+                break;
         }
     }
 
+    private void mScoreDisplay(String team) {
+        switch (team) {
+            case "A":
+                TextView mScoreViewA = (TextView) findViewById(R.id.matchScoreA);
+                mScoreViewA.setText(String.valueOf(matchScoreA));
+                break;
+            case "B":
+                TextView mScoreViewB = (TextView) findViewById(R.id.matchScoreB);
+                mScoreViewB.setText(String.valueOf(matchScoreB));
+                break;
+        }
+    }
+
+    //display score buttons according to pointsystem, "1,2" by default
     private void scoreButtonDisplay() {
         if (game.getPointSystem().equals("2,3")) {
             Button teamA1pt = (Button) findViewById(R.id.team_a_1pt);
             Button teamA2pt = (Button) findViewById(R.id.team_a_2pt);
             Button teamB1pt = (Button) findViewById(R.id.team_b_1pt);
             Button teamB2pt = (Button) findViewById(R.id.team_b_2pt);
-            teamA1pt.setText("+2 points");
-            teamA2pt.setText("+3 points");
-            teamB1pt.setText("+2 points");
-            teamB2pt.setText("+3 points");
+            teamA1pt.setText(getString(R.string.twopointer));
+            teamA2pt.setText(getString(R.string.threepointer));
+            teamB1pt.setText(getString(R.string.twopointer));
+            teamB2pt.setText(getString(R.string.threepointer));
         }
     }
 
-    private void mScoreDisplay(String team) {
-        switch (team) {
-            case "A": TextView mScoreViewA = (TextView)findViewById(R.id.matchScoreA);
-                      mScoreViewA.setText(String.valueOf(matchScoreA));
-                      break;
-            case "B": TextView mScoreViewB = (TextView)findViewById(R.id.matchScoreB);
-                      mScoreViewB.setText(String.valueOf(matchScoreB));
-                      break;
-        }
-    }
-
-    public void score (View view) {
+    //adds points to team scores depending on the id of the caller button
+    public void score(View view) {
         switch (view.getId()) {
             case R.id.team_a_1pt:
-                if (game.getPointSystem().equals("1,2")){
+                if (game.getPointSystem().equals("1,2")) {
                     game.addScore("A", 1);
                 } else {
                     game.addScore("A", 2);
                 }
                 display("A", game.getScore("A"));
+                winCheck("A", false);
                 break;
             case R.id.team_a_2pt:
-                if (game.getPointSystem().equals("1,2")){
+                if (game.getPointSystem().equals("1,2")) {
                     game.addScore("A", 2);
                 } else {
                     game.addScore("A", 3);
                 }
                 display("A", game.getScore("A"));
+                winCheck("A", false);
                 break;
-            case  R.id.team_b_1pt:
-                if (game.getPointSystem().equals("1,2")){
+            case R.id.team_b_1pt:
+                if (game.getPointSystem().equals("1,2")) {
                     game.addScore("B", 1);
                 } else {
                     game.addScore("B", 2);
                 }
                 display("B", game.getScore("B"));
+                winCheck("B", false);
                 break;
             case R.id.team_b_2pt:
-                if (game.getPointSystem().equals("1,2")){
+                if (game.getPointSystem().equals("1,2")) {
                     game.addScore("B", 2);
                 } else {
                     game.addScore("B", 3);
                 }
                 display("B", game.getScore("B"));
+                winCheck("B", false);
                 break;
         }
         if (game.getMatchType().equals("switch") && game.getScore("A") < game.getWinScore()) {
             switchAttack();
         }
-        winCheck("A");
-        winCheck("B");
     }
 
     public void rebound(View view) {
         switchAttack();
     }
 
-    public void winCheck (String team){
+    public void winCheck(String team, boolean saveState) {
         if (game.getScore("A") >= game.getWinScore() || game.getScore("B") >= game.getWinScore()) {
-            if (game.getScore("A") >= game.getWinScore()) {
-                TextView TV = (TextView)findViewById(R.id.team_a_score);
-                TV.setText(getString(R.string.winner));
-                matchScoreA++;
-                mScoreDisplay("A");
-            } if (game.getScore("B") >= game.getWinScore()) {
-                TextView TV = (TextView)findViewById(R.id.team_b_score);
-                TV.setText(getString(R.string.winner));
-                matchScoreB++;
-                mScoreDisplay("B");
-            }
-            Button reset = (Button)findViewById(R.id.resetButton);
-            reset.setText("Next Game");
+            Button reset = (Button) findViewById(R.id.resetButton);
+            reset.setText(getString(R.string.nextGame));
             scoreButtonState("locked");
+            switch (team) {
+                case "A":
+                    if (game.getScore("A") >= game.getWinScore()) {
+                        TextView TV = (TextView) findViewById(R.id.team_a_score);
+                        TV.setText(getString(R.string.winner));
+                        if (!saveState) {
+                            matchScoreA++;
+                        }
+                        mScoreDisplay("A");
+                        break;
+                    }
+                case "B":
+                    if (game.getScore("B") >= game.getWinScore()) {
+                        TextView TV = (TextView) findViewById(R.id.team_b_score);
+                        TV.setText(getString(R.string.winner));
+                        if (!saveState) {
+                            matchScoreB++;
+                        }
+                        mScoreDisplay("B");
+                        break;
+                    }
+            }
         }
     }
 
@@ -172,10 +193,11 @@ public class MainActivity extends AppCompatActivity{
         onAttack = "B";
         switchAttack();
         scoreButtonState("attackA");
-        Button reset = (Button)findViewById(R.id.resetButton);
+        Button reset = (Button) findViewById(R.id.resetButton);
         reset.setText(getString(R.string.reset));
     }
 
+    //current attackers score buttons are enabled and background changes accordingly
     public void switchAttack() {
         RelativeLayout layoutA = (RelativeLayout) findViewById(R.id.team_a_layout);
         RelativeLayout layoutB = (RelativeLayout) findViewById(R.id.team_b_layout);
@@ -192,7 +214,8 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void scoreButtonState(String buttonState){
+    //handle enabling of score buttons
+    private void scoreButtonState(String buttonState) {
         Button a_3pt = (Button) findViewById(R.id.team_a_2pt);
         Button a_2pt = (Button) findViewById(R.id.team_a_1pt);
         Button a_rb = (Button) findViewById(R.id.team_a_rb);
@@ -200,39 +223,42 @@ public class MainActivity extends AppCompatActivity{
         Button b_2pt = (Button) findViewById(R.id.team_b_1pt);
         Button b_rb = (Button) findViewById(R.id.team_b_rb);
         switch (buttonState) {
-            case "attackA": a_3pt.setEnabled(true);
-                            a_2pt.setEnabled(true);
-                            a_rb.setEnabled(true);
-                            b_3pt.setEnabled(false);
-                            b_2pt.setEnabled(false);
-                            b_rb.setEnabled(false);
-                            break;
-            case "attackB": a_3pt.setEnabled(false);
-                            a_2pt.setEnabled(false);
-                            a_rb.setEnabled(false);
-                            b_3pt.setEnabled(true);
-                            b_2pt.setEnabled(true);
-                            b_rb.setEnabled(true);
-                            break;
-            case "locked":  a_3pt.setEnabled(false);
-                            a_2pt.setEnabled(false);
-                            a_rb.setEnabled(false);
-                            b_3pt.setEnabled(false);
-                            b_2pt.setEnabled(false);
-                            b_rb.setEnabled(false);
+            case "attackA":
+                a_3pt.setEnabled(true);
+                a_2pt.setEnabled(true);
+                a_rb.setEnabled(true);
+                b_3pt.setEnabled(false);
+                b_2pt.setEnabled(false);
+                b_rb.setEnabled(false);
+                break;
+            case "attackB":
+                a_3pt.setEnabled(false);
+                a_2pt.setEnabled(false);
+                a_rb.setEnabled(false);
+                b_3pt.setEnabled(true);
+                b_2pt.setEnabled(true);
+                b_rb.setEnabled(true);
+                break;
+            case "locked":
+                a_3pt.setEnabled(false);
+                a_2pt.setEnabled(false);
+                a_rb.setEnabled(false);
+                b_3pt.setEnabled(false);
+                b_2pt.setEnabled(false);
+                b_rb.setEnabled(false);
         }
     }
 
     public void readInfo(View view) {
-        EditText nameA = (EditText)findViewById(R.id.editText_teamA);
-        EditText nameB = (EditText)findViewById(R.id.editText_teamB);
-        EditText score = (EditText)findViewById(R.id.editText_score);
-        RadioGroup r1 = (RadioGroup)findViewById(R.id.radiogroup1);
-        RadioGroup r2 = (RadioGroup)findViewById(R.id.radiogroup2);
+        EditText nameA = (EditText) findViewById(R.id.editText_teamA);
+        EditText nameB = (EditText) findViewById(R.id.editText_teamB);
+        EditText score = (EditText) findViewById(R.id.editText_score);
+        RadioGroup r1 = (RadioGroup) findViewById(R.id.radiogroup1);
+        RadioGroup r2 = (RadioGroup) findViewById(R.id.radiogroup2);
         game.setName("A", nameA.getText().toString());
         game.setName("B", nameB.getText().toString());
         //read team names, break and toast if no input
-        if (game.getName("A").equals("") || game.getName("B").equals("")){
+        if (game.getName("A").equals("") || game.getName("B").equals("")) {
             Toast.makeText(this, "Enter team names", Toast.LENGTH_LONG).show();
             return;
         }
@@ -248,7 +274,7 @@ public class MainActivity extends AppCompatActivity{
         int selected = r1.indexOfChild(radioButton);
         if (selected == 0) {
             game.setPointSystem("1,2");
-        } else if (selected == 1){
+        } else if (selected == 1) {
             game.setPointSystem("2,3");
         } else {                                    //break and toast if no input
             Toast.makeText(this, "Pick scoring type", Toast.LENGTH_SHORT).show();
@@ -260,7 +286,7 @@ public class MainActivity extends AppCompatActivity{
         selected = r2.indexOfChild(radioButton);
         if (selected == 0) {
             game.setMatchType("set");
-        } else if (selected == 1){
+        } else if (selected == 1) {
             game.setMatchType("switch");
         } else {                                    //toast message if no input
             Toast.makeText(this, "Pick match type", Toast.LENGTH_SHORT).show();
@@ -271,11 +297,11 @@ public class MainActivity extends AppCompatActivity{
         startActivity(i);
     }
 
-    public void setRules (View view) {
+    //show toast explaining matchtype rules
+    public void setRules(View view) {
         Toast.makeText(this, "Scorer retains attack after scoring", Toast.LENGTH_LONG).show();
     }
-
-    public void switchRules (View view) {
+    public void switchRules(View view) {
         Toast.makeText(this, "Attacking side is switched after scoring", Toast.LENGTH_LONG).show();
     }
 }

@@ -3,11 +3,14 @@
     <string name="team_1">Team 1</string>
     <string name="team_2">Team 2</string>
     <string name="winner">Winner</string>
+    <string name="threepointer">+3 points</string>
     <string name="twopointer">+2 points</string>
     <string name="onepointer">+1 point</string>
     <string name="rebound">rebound</string>
     <string name="reset">reset</string>
+    <string name="nextGame">Next Game</string>
     <string name="startingScore">0</string>
+    <string name="winScoreHint">00</string>
     <string name="winScore">Score to win</string>
     <string name="scoring">Scoring</string>
     <string name="pointSystem1">1&#8211;2 points</string>
@@ -16,4 +19,5 @@
     <string name="setType">Set</string>
     <string name="switchType">Switch</string>
     <string name="allSet">ALL SET</string>
+    <string name="contentDesc">background image</string>
 </resources>
