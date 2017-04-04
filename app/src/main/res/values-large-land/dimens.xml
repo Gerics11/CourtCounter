@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Intro screen-->
+    <dimen name="header_height">200dp</dimen>
+    <dimen name="VS_image">150dp</dimen>
+    <dimen name="VS_image_position">25dp</dimen>
+    <dimen name="team_edittext_padding">8dp</dimen>
+    <dimen name="team_edittext_textsize">32sp</dimen>
+    <dimen name="team_edittext_verticalpos">74dp</dimen>
+    <dimen name="team_edittext_margin">150dp</dimen>
+    <dimen name="intro_textsize">28sp</dimen>
+    <dimen name="intro_topbottom_padding">4dp</dimen>
+    <dimen name="linearlayout_padding">16dp</dimen>
+    <dimen name="linearlayout_position">24dp</dimen>
+    <dimen name="radiobutton_gap">8dp</dimen>
+    <dimen name="introfinish_margintop">-40dp</dimen>
+    <!--Main Activity screen-->
+    <dimen name="teamlayout_height">330dp</dimen>
+    <dimen name="team_textview_margintop">16dp</dimen>
+    <dimen name="team_textview_padding">6dp</dimen>
+    <dimen name="team_textview_textsize">24sp</dimen>
+    <dimen name="team_textview_marginbottom">8dp</dimen>
+    <dimen name="score_textsize">48sp</dimen>
+    <dimen name="score_margin">8dp</dimen>
+    <dimen name="button_sidemargin">36dp</dimen>
+    <dimen name="buttons_gap">8dp</dimen>
+    <dimen name="button_textsize">24sp</dimen>
+    <dimen name="topbutton_position">12dp</dimen>
+    <dimen name="resetbutton_position">60dp</dimen>
+    <dimen name="resetlayout_padding">10dp</dimen>
+</resources>

@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="winner_textsize">76sp</dimen>
-    <dimen name="button_textsize">46sp</dimen>
-    <dimen name="score_margin">30dp</dimen>
+    <!--Intro screen-->
+    <dimen name="header_height">280dp</dimen>
+    <dimen name="VS_image">180dp</dimen>
+    <dimen name="VS_image_position">40dp</dimen>
+    <dimen name="team_edittext_padding">12dp</dimen>
+    <dimen name="team_edittext_textsize">48sp</dimen>
+    <dimen name="team_edittext_verticalpos">90dp</dimen>
+    <dimen name="team_edittext_margin">90dp</dimen>
+    <dimen name="intro_textsize">32sp</dimen>
+    <dimen name="intro_topbottom_padding">16dp</dimen>
+    <dimen name="linearlayout_padding">24dp</dimen>
+    <dimen name="linearlayout_position">40dp</dimen>
+    <dimen name="radiobutton_gap">24dp</dimen>
+    <dimen name="introfinish_margintop">55dp</dimen>
+    <!--Main Activity screen-->
+    <dimen name="teamlayout_height">630dp</dimen>
+    <dimen name="team_textview_margintop">50dp</dimen>
+    <dimen name="team_textview_padding">10dp</dimen>
+    <dimen name="team_textview_textsize">36sp</dimen>
+    <dimen name="team_textview_marginbottom">16dp</dimen>
+    <dimen name="score_textsize">76sp</dimen>
+    <dimen name="score_margin">8dp</dimen>
+    <dimen name="button_sidemargin">44dp</dimen>
+    <dimen name="buttons_gap">44dp</dimen>
+    <dimen name="button_textsize">32sp</dimen>
+    <dimen name="topbutton_position">48dp</dimen>
+    <dimen name="resetbutton_position">120dp</dimen>
+    <dimen name="resetlayout_padding">8dp</dimen>
 </resources>

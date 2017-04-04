@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/court2"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.example.android.courtcounter.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/teamlayout_height"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/team_a_layout"
+                    style="@style/team_layout"
+                    android:background="@color/light_gray">
+
+                    <TextView
+                        android:id="@+id/matchScoreA"
+                        style="@style/score_textview"
+                        android:text="@string/startingScore"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/teamAName"
+                        style="@style/team_textview"
+                        android:text="@string/team_1" />
+
+                    <TextView
+                        android:id="@+id/team_a_score"
+                        style="@style/score_textview"
+                        android:layout_below="@id/teamAName"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/startingScore"
+                        android:textColor="@android:color/black" />
+
+                    <Button
+                        android:id="@+id/team_a_2pt"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_a_score"
+                        android:layout_marginTop="@dimen/topbutton_position"
+                        android:onClick="score"
+                        android:text="@string/twopointer" />
+
+                    <Button
+                        android:id="@+id/team_a_1pt"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_a_2pt"
+                        android:onClick="score"
+                        android:text="@string/onepointer" />
+
+                    <Button
+                        android:id="@+id/team_a_rb"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_a_1pt"
+                        android:onClick="rebound"
+                        android:text="@string/rebound" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/team_b_layout"
+                    style="@style/team_layout">
+
+                    <TextView
+                        android:id="@+id/matchScoreB"
+                        style="@style/score_textview"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/startingScore"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/teamBName"
+                        style="@style/team_textview"
+                        android:text="@string/team_2" />
+
+                    <TextView
+                        android:id="@+id/team_b_score"
+                        style="@style/score_textview"
+                        android:layout_below="@id/teamBName"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/startingScore"
+                        android:textColor="@android:color/black" />
+
+                    <Button
+                        android:id="@+id/team_b_2pt"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_b_score"
+                        android:layout_marginTop="@dimen/topbutton_position"
+                        android:onClick="score"
+                        android:text="@string/twopointer" />
+
+                    <Button
+                        android:id="@+id/team_b_1pt"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_b_2pt"
+                        android:onClick="score"
+                        android:text="@string/onepointer" />
+
+                    <Button
+                        android:id="@+id/team_b_rb"
+                        style="@style/button_style"
+                        android:layout_below="@id/team_b_1pt"
+                        android:onClick="rebound"
+                        android:text="@string/rebound" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/resetbutton_position"
+                android:background="@color/light_gray"
+                android:padding="@dimen/resetlayout_padding">
+
+                <Button
+                    android:id="@+id/resetButton"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:onClick="resetScore"
+                    android:text="@string/reset" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
