@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String MATCHSCOREA = "SAVEDMATCHSCOREA";
     private static final String MATCHSCOREB = "SAVEDMATCHSCOREB";
     CurrentGame game = new CurrentGame("PH", "PH", 0, "PH", "PH");
+//    CurrentGame game;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
             TextView teamB = (TextView) findViewById(R.id.teamBName);
             if (savedInstanceState == null) {                       //read object from intent
                 game = b.getParcelable("gameObject");
+
             } else {                                                //read object from save state
                 game = savedInstanceState.getParcelable("gameObject");
                 onAttack = savedInstanceState.getString(ATTACKER);
                 matchScoreA = savedInstanceState.getInt(MATCHSCOREA);
                 matchScoreB = savedInstanceState.getInt(MATCHSCOREB);
+
             }
             //display names and scores
             teamA.setText(game.getName("A"));
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -66,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         outState.putParcelable("gameObject", game);
     }
 
+    /**
+     * Display the current game score of given team
+     * @param team input "A" or "B"
+     * @param score integer value to display
+     */
     public void display(String team, int score) {
         switch (team) {
             case "A":
@@ -79,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Display the number of games won by given team
+     * @param team input "A" or "B"
+     */
     private void mScoreDisplay(String team) {
         switch (team) {
             case "A":
@@ -92,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //display score buttons according to pointsystem, "1,2" by default
+    /**
+     * Set score button text according to given score system
+     */
     private void scoreButtonDisplay() {
         if (game.getPointSystem().equals("2,3")) {
             Button teamA1pt = (Button) findViewById(R.id.team_a_1pt);
@@ -106,7 +121,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //adds points to team scores depending on the id of the caller button
+    /**
+     * Add points to team score according to caller button and point system
+     * @param view score buttons
+     */
     public void score(View view) {
         switch (view.getId()) {
             case R.id.team_a_1pt:
@@ -155,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
         switchAttack();
     }
 
+    /**
+     * Compare given teams current score to the custom win score, if met, winner announced and match score adjusted
+     * @param team "A" or "B" team to check
+     * @param saveState if the method is called while activity is being recreated, no points added
+     */
     public void winCheck(String team, boolean saveState) {
         if (game.getScore("A") >= game.getWinScore() || game.getScore("B") >= game.getWinScore()) {
             Button reset = (Button) findViewById(R.id.resetButton);
@@ -185,6 +208,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * reset scores of current match
+     * @param view called by reset button
+     */
     public void resetScore(View view) {
         game.resetScore();
         display("A", game.getScore("A"));
@@ -197,7 +224,9 @@ public class MainActivity extends AppCompatActivity {
         reset.setText(getString(R.string.reset));
     }
 
-    //current attackers score buttons are enabled and background changes accordingly
+    /**
+     * Current attackers score buttons are enabled and background changes accordingly
+     */
     public void switchAttack() {
         RelativeLayout layoutA = (RelativeLayout) findViewById(R.id.team_a_layout);
         RelativeLayout layoutB = (RelativeLayout) findViewById(R.id.team_b_layout);
@@ -214,7 +243,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //handle enabling of score buttons
+    /**
+     * Handle enabling buttons for the current attacker team
+     * @param buttonState "attackA", "attackB" or "locked"
+     */
     private void scoreButtonState(String buttonState) {
         Button a_3pt = (Button) findViewById(R.id.team_a_2pt);
         Button a_2pt = (Button) findViewById(R.id.team_a_1pt);
@@ -249,6 +281,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Read all input from intro screen and start main activity
+     * @param view "All set" button
+     */
     public void readInfo(View view) {
         EditText nameA = (EditText) findViewById(R.id.editText_teamA);
         EditText nameB = (EditText) findViewById(R.id.editText_teamB);
@@ -297,10 +333,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    //show toast explaining matchtype rules
+    /**
+     * Display toast explaining matchtype
+     */
     public void setRules(View view) {
         Toast.makeText(this, "Scorer retains attack after scoring", Toast.LENGTH_LONG).show();
     }
+
+    /**
+     * Display toast explaining matchtype
+     */
     public void switchRules(View view) {
         Toast.makeText(this, "Attacking side is switched after scoring", Toast.LENGTH_LONG).show();
     }

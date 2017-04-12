@@ -24,7 +24,7 @@ public class CurrentGame implements Parcelable{
         this.matchType = matchType;
     }
     //parcel constructor
-    public CurrentGame (Parcel in){
+    private CurrentGame (Parcel in){
         readFromParcel(in);
     }
     @Override
@@ -63,7 +63,7 @@ public class CurrentGame implements Parcelable{
         matchType = in.readString();
     }
 
-    public void addScore (String team, int points) {
+    void addScore (String team, int points) {
         switch (team) {
             case "A": teamAScore = teamAScore + points;
                 break;
@@ -127,6 +127,7 @@ public class CurrentGame implements Parcelable{
     public String getMatchType() {
         return matchType;
     }
+
 }
 
 
